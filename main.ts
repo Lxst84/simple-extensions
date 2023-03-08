@@ -1,0 +1,56 @@
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.floorDarkDiamond, function (sprite, location) {
+    game.splash("level 6 complete GG")
+    game.splash("play again")
+    game.gameOver(true)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.purpleOuterWest2, function (sprite, location) {
+    tiles.setCurrentTilemap(tilemap`level13`)
+    tiles.placeOnTile(myCorg, tiles.getTileLocation(1, 4))
+    game.splash("level 4 complete")
+    game.splash("level 5")
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.purpleOuterNorthWest, function (sprite, location) {
+    tiles.placeOnTile(myCorg, tiles.getTileLocation(1, 4))
+    tiles.setCurrentTilemap(tilemap`level8`)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.greenInnerSouthWest, function (sprite, location) {
+    tiles.setCurrentTilemap(tilemap`level3`)
+    tiles.placeOnTile(myCorg, tiles.getTileLocation(1, 4))
+    game.splash("level 2 complete")
+    game.splash("level 3")
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.purpleOuterSouth2, function (sprite, location) {
+    tiles.placeOnTile(myCorg, tiles.getTileLocation(1, 5))
+    game.splash("level 5 complete")
+    game.splash("level 6")
+    tiles.setCurrentTilemap(tilemap`level22`)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.purpleOuterSouthEast, function (sprite, location) {
+    tiles.placeOnTile(myCorg, tiles.getTileLocation(1, 4))
+    tiles.setCurrentTilemap(tilemap`level8`)
+    game.splash("level 3 complete")
+    game.splash("level 4")
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function (sprite, location) {
+    info.changeLifeBy(-1)
+    scene.cameraShake(2, 500)
+    tiles.placeOnTile(myCorg, tiles.getTileLocation(1, 4))
+})
+info.onLifeZero(function () {
+    game.gameOver(false)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleInsignia, function (sprite, location) {
+    tiles.setCurrentTilemap(tilemap`level2`)
+    tiles.placeOnTile(myCorg, tiles.getTileLocation(1, 4))
+    game.splash("level 1 complete")
+    game.splash("level 2")
+})
+let myCorg: Corgio = null
+controller.moveSprite(myCorg, 100, 0)
+myCorg = corgio.create(SpriteKind.Player)
+myCorg.horizontalMovement()
+myCorg.verticalMovement()
+myCorg.updateSprite()
+tiles.setTilemap(tilemap`level1`)
+scene.cameraFollowSprite(myCorg)
+info.setLife(10)
