@@ -1,5 +1,5 @@
 {
-    "name": "Simple Extensions - Copy",
+    "name": "Simple Extensions - Copy - Copy",
     "description": "",
     "dependencies": {
         "device": "*",
@@ -21,7 +21,7 @@
         "test.ts"
     ],
     "targetVersions": {
-        "target": "1.12.25",
+        "target": "1.12.26",
         "targetId": "arcade"
     },
     "supportedTargets": [

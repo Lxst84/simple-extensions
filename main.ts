@@ -41,12 +41,14 @@ info.onCountdownEnd(function () {
     game.gameOver(false)
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function (sprite7, location7) {
-    info.changeLifeBy(-1)
     scene.cameraShake(2, 500)
     tiles.placeOnTile(myCorg, tiles.getTileLocation(1, 4))
 })
-info.onLifeZero(function () {
+statusbars.onZero(StatusBarKind.Health, function (status) {
     game.gameOver(false)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function (sprite, location) {
+    statusbar.value += -10
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.purpleOuterSouth2, function (sprite5, location5) {
     tiles.placeOnTile(myCorg, tiles.getTileLocation(1, 5))
@@ -68,6 +70,12 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.purpleOuterSouthEast, fun
 })
 let projectile_2: Sprite = null
 let myCorg: Corgio = null
+let statusbar: StatusBarSprite = null
+statusbar = statusbars.create(20, 4, StatusBarKind.Health)
+statusbar.setLabel("HP")
+statusbar.attachToSprite(myCorg)
+statusbar.positionDirection(CollisionDirection.Top)
+statusbar.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
 game.splash("to move press w a s d or the arrow keys")
 controller.moveSprite(myCorg, 100, 0)
 myCorg = corgio.create(SpriteKind.Player)
@@ -76,5 +84,3 @@ myCorg.verticalMovement()
 myCorg.updateSprite()
 tiles.setTilemap(tilemap`level1`)
 scene.cameraFollowSprite(myCorg)
-info.setLife(10)
-info.startCountdown(90)
