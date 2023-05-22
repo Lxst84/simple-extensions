@@ -10,7 +10,8 @@
         "arcade-minimap": "github:microsoft/arcade-minimap#v0.6.1",
         "Color Fading": "github:jwunderl/pxt-color#v0.2.2",
         "controller": "*",
-        "Timers": "github:microsoft/arcade-timers#v1.1.0"
+        "Timers": "github:microsoft/arcade-timers#v1.1.0",
+        "multiplayer": "*"
     },
     "files": [
         "main.blocks",

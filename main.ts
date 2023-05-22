@@ -1,3 +1,6 @@
+namespace StatusBarKind {
+    export const timer = StatusBarKind.create()
+}
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.purpleOuterNorthWest, function (sprite3, location3) {
     tiles.placeOnTile(myCorg, tiles.getTileLocation(1, 4))
     tiles.setCurrentTilemap(tilemap`level8`)
@@ -39,9 +42,6 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, myCorg, 200, 0)
-})
-info.onCountdownEnd(function () {
-    game.gameOver(false)
 })
 controller.combos.attachCombo("up down left right  ", function () {
     game.splash("ahh you've used the Kunami code  ")
